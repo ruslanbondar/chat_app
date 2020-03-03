@@ -24,11 +24,11 @@ io.on("connect", socket => {
 
     socket.emit("message", {
       user: "admin",
-      text: `${user.name}, welcome to room ${user.room}.`
+      text: `hello ${user.name}, welcome to room ${user.room}`
     });
     socket.broadcast
       .to(user.room)
-      .emit("message", { user: "admin", text: `${user.name} has joined!` });
+      .emit("message", { user: "admin", text: `${user.name} has joined` });
 
     io.to(user.room).emit("roomData", {
       room: user.room,
@@ -63,5 +63,5 @@ io.on("connect", socket => {
 });
 
 server.listen(process.env.PORT || 5000, () =>
-  console.log(`Server has started.`)
+  console.log("Server has started")
 );

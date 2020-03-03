@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Message.module.css";
 import ReactEmoji from "react-emoji";
+import { Badge } from "react-bootstrap";
 
 const Message = ({ message: { text, user }, name }) => {
   let isSentByCurrentUser = false;
@@ -13,21 +14,41 @@ const Message = ({ message: { text, user }, name }) => {
 
   return isSentByCurrentUser ? (
     <div className={`${styles.messageContainer} ${styles.justifyEnd}`}>
-      <p className={`${styles.sentText} ${styles.pr10}`}>{trimmedName}</p>
-      <div className={`${styles.messageBox} ${styles.backgroundBlue}`}>
-        <p className={`${styles.messageText} ${styles.colorWhite}`}>
-          {ReactEmoji.emojify(text)}
-        </p>
-      </div>
+      <Badge
+        style={{ background: "none", color: "#828282a8", fontWeight: "400" }}
+      >
+        {trimmedName}
+      </Badge>
+      <Badge
+        style={{
+          padding: "10px 14px 12px",
+          borderRadius: "14px",
+          fontSize: "18px",
+          background: "#37adb1a8",
+          color: "#fff"
+        }}
+      >
+        {ReactEmoji.emojify(text)}
+      </Badge>
     </div>
   ) : (
     <div className={`${styles.messageContainer} ${styles.justifyStart}`}>
-      <div className={`${styles.messageBox} ${styles.backgroundLight}`}>
-        <p className={`${styles.messageText} ${styles.colorDark}`}>
-          {ReactEmoji.emojify(text)}
-        </p>
-      </div>
-      <p className={`${styles.sentText} ${styles.pl10}`}>{user}</p>
+      <Badge
+        style={{
+          padding: "10px 14px 12px",
+          borderRadius: "14px",
+          fontSize: "18px",
+          background: "#828282a8",
+          color: "#fff"
+        }}
+      >
+        {ReactEmoji.emojify(text)}
+      </Badge>
+      <Badge
+        style={{ background: "none", color: "#828282a8", fontWeight: "400" }}
+      >
+        {user}
+      </Badge>
     </div>
   );
 };

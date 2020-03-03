@@ -1,12 +1,12 @@
 import React from "react";
-import onlineIcon from "../../icons/onlineIcon.png";
+import onlineIcon from "../../icons/online.svg";
 import styles from "./TextContainer.module.css";
 
 const TextContainer = ({ users }) => (
   <div className={styles.textContainer}>
     {users ? (
       <div>
-        <h1>People currently chatting:</h1>
+        <h1>Online:</h1>
         <div className={styles.activeContainer}>
           <h2>
             {users.map(({ name }) => (
